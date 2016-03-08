@@ -31,6 +31,10 @@ $(function() {
             for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width(); left = left + KOKO) {
                 var monesl = Math.floor(loc.left / KOKO * -1);
                 var monesk = Math.floor(loc.top / KOKO * -1);
+				if (monesl < 0 || monesk < 0 || monesl > (Math.pow(2,(zoomLvl-1))) || monesk > (Math.pow(2,(zoomLvl-1))) ) {
+					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
+					continue;
+				}
                 console.log("Moneskol " + monesl);
                 console.log("Moneskok " + monesk);
                 console.log(loc);
