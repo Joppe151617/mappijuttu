@@ -29,9 +29,9 @@ $(function() {
     $("#rainbow").onPositionChanged(function(loc){ <!-- loc.top loc.left -->
         for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height(); topk = topk + KOKO) {
             for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width(); left = left + KOKO) {
-                var monesl = Math.floor(loc.left / KOKO * -1);
-                var monesk = Math.floor(loc.top / KOKO * -1);
-				if (monesl < 0 || monesk < 0 || monesl > (Math.pow(2,(zoomLvl-1))) || monesk > (Math.pow(2,(zoomLvl-1))) ) {
+                var monesl = loc.left < 0 ? Math.floor(loc.left / KOKO * -1) : 0;
+                var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
+				if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
 					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
 					continue;
 				}
