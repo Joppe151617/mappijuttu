@@ -1,4 +1,5 @@
 var zoomLvl = 1;
+var zmuisti = zoomLvl;
 var KOKO = 256;
 
 $(function() {
@@ -22,6 +23,13 @@ $(function() {
             $("#rainbow").css("top", vanhaY - (usijy - y));
             $("#rainbow").css("left", vanhaX - (usijx - x));
         }
+		if (zmuisti != zoomLvl) {
+		$(".img_" + zmuisti).hide();
+		console.log("Piilotetaan " + zmuisti);
+		$(".img_" + zoomLvl).show();
+		console.log("Näytetään " + zoomLvl);
+		zmuisti = zoomLvl;
+		}
         event.stopPropagation();
         event.preventDefault();
     });
@@ -33,19 +41,19 @@ $(function() {
         for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
             for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
 				if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
-					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
+//					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
 					continue;
 				}
-                console.log("Moneskol " + monesl);
-                console.log("Moneskok " + monesk);
-                console.log(loc);
-                console.log("left " + left + " top " + topk );
+//                console.log("Moneskol " + monesl);
+//                console.log("Moneskok " + monesk);
+//                console.log(loc);
+//                console.log("left " + left + " top " + topk );
                 console.log(zoomLvl);
                 var zLvl = zoomLvl-1;
                 if ($("#img_"+zLvl +"_"+monesl+"_"+monesk).length) {
-                    console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
+//                    console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
                 } else {
-                    console.log("Luodaan kuva");
+//                    console.log("Luodaan kuva");
                     var img = $('<img>')
                     img.attr("id", "img_"+zLvl+"_"+monesl+"_"+monesk);
                     img.addClass("img_" + zLvl);
