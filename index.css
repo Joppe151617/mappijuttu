@@ -2,7 +2,7 @@
     overflow: hidden;
 }
 #rainbow img {
-    position: relative
+    position: absolute;
 }
 #rainbow {
     position: fixed;
