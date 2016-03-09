@@ -40,7 +40,7 @@ $(function() {
     });
 });
 
-$(function haeKuvat(loc) {
+function haeKuvat(loc) {
 	var monesl = loc.left < 0 ? Math.floor(loc.left / KOKO * -1) : 0;
 	var lmuisti = monesl;
     var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
@@ -75,4 +75,4 @@ $(function haeKuvat(loc) {
 		monesl = lmuisti;
 		monesk++;
 	}
-});
+}
