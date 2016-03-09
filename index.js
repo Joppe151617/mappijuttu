@@ -30,8 +30,8 @@ $(function() {
 		var monesl = loc.left < 0 ? Math.floor(loc.left / KOKO * -1) : 0;
 		var lmuisti = monesl;
         var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
-        for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height(); topk = topk + KOKO) {
-            for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width(); left = left + KOKO) {
+        for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
+            for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
 				if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
 					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
 					continue;
