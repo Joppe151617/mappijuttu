@@ -4,7 +4,7 @@ var KOKO = 256;
 
 $(function() {
     $("#rainbow").draggable();
-
+	haeKuvat($("#rainbow").position());
     $('#rainbow').mousewheel(function(event, delta) {
         var vanhaX = $("#rainbow").offset().left;
         var vanhaY = $("#rainbow").offset().top;
@@ -32,11 +32,11 @@ $(function() {
 		}
         event.stopPropagation();
         event.preventDefault();
-		haeKuvat($("#rainbow").position())
+		haeKuvat($("#rainbow").position());
     });
 
     $("#rainbow").onPositionChanged(function(loc){ <!-- loc.top loc.left -->
-		haeKuvat(loc)
+		haeKuvat(loc);
     });
 });
 
