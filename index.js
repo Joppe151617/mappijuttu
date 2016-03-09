@@ -32,42 +32,47 @@ $(function() {
 		}
         event.stopPropagation();
         event.preventDefault();
+		haeKuvat($("#rainbow").position())
     });
 
     $("#rainbow").onPositionChanged(function(loc){ <!-- loc.top loc.left -->
-		var monesl = loc.left < 0 ? Math.floor(loc.left / KOKO * -1) : 0;
-		var lmuisti = monesl;
-        var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
-        for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
-            for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
-				if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
-//					console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
-					continue;
-				}
-//                console.log("Moneskol " + monesl);
-//                console.log("Moneskok " + monesk);
-//                console.log(loc);
-//                console.log("left " + left + " top " + topk );
-                console.log(zoomLvl);
-                var zLvl = zoomLvl-1;
-                if ($("#img_"+zLvl +"_"+monesl+"_"+monesk).length) {
-//                    console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
-                } else {
-//                    console.log("Luodaan kuva");
-                    var img = $('<img>')
-                    img.attr("id", "img_"+zLvl+"_"+monesl+"_"+monesk);
-                    img.addClass("img_" + zLvl);
-                    img.width(256);
-                    img.height(256);
-                    img.attr("src", "kuvat\\"+zLvl+"\\"+zLvl+"_"+monesl+"_"+monesk+".jpg");
-                    img.css("left", monesl * KOKO);
-                    img.css("top", monesk * KOKO);
-                    $("#rainbow").append(img);
-                }
-				monesl++;
-			}
-			monesl = lmuisti;
-			monesk++;
-		}
+		haeKuvat(loc)
     });
+});
+
+$(function haeKuvat(loc) {
+	var monesl = loc.left < 0 ? Math.floor(loc.left / KOKO * -1) : 0;
+	var lmuisti = monesl;
+    var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
+    for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
+        for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
+			if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
+//				console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
+				continue;
+			}
+//          console.log("Moneskol " + monesl);
+//          console.log("Moneskok " + monesk);
+//          console.log(loc);
+//          console.log("left " + left + " top " + topk );
+            console.log(zoomLvl);
+            var zLvl = zoomLvl-1;
+            if ($("#img_"+zLvl +"_"+monesl+"_"+monesk).length) {
+//              console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
+            } else {
+//              console.log("Luodaan kuva");
+                var img = $('<img>')
+                img.attr("id", "img_"+zLvl+"_"+monesl+"_"+monesk);
+                img.addClass("img_" + zLvl);
+                img.width(256);
+                img.height(256);
+                img.attr("src", "kuvat\\"+zLvl+"\\"+zLvl+"_"+monesl+"_"+monesk+".jpg");
+                img.css("left", monesl * KOKO);
+                img.css("top", monesk * KOKO);
+                $("#rainbow").append(img);
+            }
+			monesl++;
+		}
+		monesl = lmuisti;
+		monesk++;
+	}
 });
