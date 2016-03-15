@@ -23,13 +23,10 @@ $(function() {
             $("#rainbow").css("top", vanhaY - (usijy - y));
             $("#rainbow").css("left", vanhaX - (usijx - x));
         }
-		if (zmuisti != zoomLvl) {
-		$(".img_" + zmuisti).hide();
-		console.log("Piilotetaan " + zmuisti);
+		
+		$("#rainbow img").hide();
 		$(".img_" + zoomLvl).show();
-		console.log("Näytetään " + zoomLvl);
-		zmuisti = zoomLvl;
-		}
+		
         event.stopPropagation();
         event.preventDefault();
 		haeKuvat($("#rainbow").position());
