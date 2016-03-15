@@ -44,18 +44,9 @@ function haeKuvat(loc) {
     for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
         for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
 			if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl))) || monesk >= (Math.pow(2,(zoomLvl))) ) {
-//				console.log("väärä paikka"+ Math.pow(2,(zoomLvl)));
 				continue;
 			}
-//          console.log("Moneskol " + monesl);
-//          console.log("Moneskok " + monesk);
-//          console.log(loc);
-//          console.log("left " + left + " top " + topk );
-            console.log(zoomLvl);
-            if ($("#img_"+zoomLvl +"_"+monesl+"_"+monesk).length) {
-//              console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
-            } else {
-//              console.log("Luodaan kuva");
+            if (!$("#img_"+zoomLvl +"_"+monesl+"_"+monesk).length) {
                 var img = $('<img>')
                 img.attr("id", "img_"+zoomLvl+"_"+monesl+"_"+monesk);
                 img.addClass("img_" + zoomLvl);
