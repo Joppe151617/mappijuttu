@@ -1,4 +1,4 @@
-var zoomLvl = 1;
+var zoomLvl = 0;
 var zmuisti = zoomLvl;
 var KOKO = 256;
 
@@ -10,14 +10,14 @@ $(function() {
         var vanhaY = $("#rainbow").offset().top;
         var x = event.pageX - $("#rainbow").offset().left;
         var y = event.pageY - $("#rainbow").offset().top;
-        var levKor = KOKO * Math.pow(2,(zoomLvl-1));
+        var levKor = KOKO * Math.pow(2,(zoomLvl));
         var sijx = x * 100 / levKor;
         var sijy = y * 100 / levKor;
-        if (0 < zoomLvl + delta && zoomLvl + delta <= 9) {
+        if (0 <= zoomLvl + delta && zoomLvl + delta <= 8) {
             zoomLvl += delta;
-            $("#rainbow").css("width", KOKO * Math.pow(2,(zoomLvl-1)));
-            $("#rainbow").css("height", KOKO * Math.pow(2,(zoomLvl-1)));
-            var ulevKor = KOKO * Math.pow(2,(zoomLvl-1));
+            $("#rainbow").css("width", KOKO * Math.pow(2,(zoomLvl)));
+            $("#rainbow").css("height", KOKO * Math.pow(2,(zoomLvl)));
+            var ulevKor = KOKO * Math.pow(2,(zoomLvl));
             var usijx = ulevKor/100 * sijx;
             var usijy = ulevKor/100 * sijy;
             $("#rainbow").css("top", vanhaY - (usijy - y));
@@ -43,8 +43,8 @@ function haeKuvat(loc) {
     var monesk = loc.top < 0 ? Math.floor(loc.top / KOKO * -1) : 0;
     for ( topk = loc.top > 0 ?loc.top : 0; topk < $(window).height()+KOKO; topk = topk + KOKO) {
         for ( left = loc.left > 0 ?loc.left : 0; left < $(window).width()+KOKO; left = left + KOKO) {
-			if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl-1))) || monesk >= (Math.pow(2,(zoomLvl-1))) ) {
-//				console.log("väärä paikka"+ Math.pow(2,(zoomLvl-1)));
+			if (monesl < 0 || monesk < 0 || monesl >= (Math.pow(2,(zoomLvl))) || monesk >= (Math.pow(2,(zoomLvl))) ) {
+//				console.log("väärä paikka"+ Math.pow(2,(zoomLvl)));
 				continue;
 			}
 //          console.log("Moneskol " + monesl);
@@ -52,7 +52,7 @@ function haeKuvat(loc) {
 //          console.log(loc);
 //          console.log("left " + left + " top " + topk );
             console.log(zoomLvl);
-            var zLvl = zoomLvl-1;
+            var zLvl = zoomLvl;
             if ($("#img_"+zLvl +"_"+monesl+"_"+monesk).length) {
 //              console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
             } else {
