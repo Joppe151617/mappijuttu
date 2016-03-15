@@ -52,17 +52,16 @@ function haeKuvat(loc) {
 //          console.log(loc);
 //          console.log("left " + left + " top " + topk );
             console.log(zoomLvl);
-            var zLvl = zoomLvl;
-            if ($("#img_"+zLvl +"_"+monesl+"_"+monesk).length) {
+            if ($("#img_"+zoomLvl +"_"+monesl+"_"+monesk).length) {
 //              console.log("Kuva olemassa, ei turhaan luoda uutta samalaista!");
             } else {
 //              console.log("Luodaan kuva");
                 var img = $('<img>')
-                img.attr("id", "img_"+zLvl+"_"+monesl+"_"+monesk);
-                img.addClass("img_" + zLvl);
+                img.attr("id", "img_"+zoomLvl+"_"+monesl+"_"+monesk);
+                img.addClass("img_" + zoomLvl);
                 img.width(256);
                 img.height(256);
-                img.attr("src", "kuvat\\"+zLvl+"\\"+zLvl+"_"+monesl+"_"+monesk+".jpg");
+                img.attr("src", "kuvat\\"+zoomLvl+"\\"+zoomLvl+"_"+monesl+"_"+monesk+".jpg");
                 img.css("left", monesl * KOKO);
                 img.css("top", monesk * KOKO);
                 $("#rainbow").append(img);
